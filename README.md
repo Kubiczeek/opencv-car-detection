@@ -14,7 +14,8 @@ It saves the results in a new image with the detected cars outlined.
 ---
 ### Running the script    
 The script has a few optional arguments that can be passed when running it:    
-`python main.py --image PATH_TO_IMAGE [--conf CONFIDENCE_THRESHOLD] [--dest DESTINATION_DIRECTORY]` - `--image PATH_TO_IMAGE` - The path to the image that you want to detect cars in.  
+`python main.py --image PATH_TO_IMAGE [--conf CONFIDENCE_THRESHOLD] [--dest DESTINATION_DIRECTORY]`
+- `--image PATH_TO_IMAGE` - The path to the image that you want to detect cars in.  
 - `--conf CONFIDENCE_THRESHOLD` - The confidence threshold for the detection. The default value is 0.3.    
 - `--dest DESTINATION_DIRECTORY` - The directory where the output image will be saved. The default value is the same directory as original.     
     
