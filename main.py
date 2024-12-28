@@ -52,7 +52,7 @@ def detect_vehicles(image_path, conf_threshold=0.3):
     cv2.putText(image, f"Vehicles: {vehicle_count}", (10, 30),
                 cv2.FONT_HERSHEY_SIMPLEX, 1, (0, 0, 255), 2)
 
-    return image
+    return image, vehicle_count
 
 
 def main(image_path, conf_threshold=0.3, dest_path=None):
@@ -65,7 +65,7 @@ def main(image_path, conf_threshold=0.3, dest_path=None):
 
     try:
         # Process image
-        result_image = detect_vehicles(image_path, conf_threshold)
+        result_image, vehicle_count = detect_vehicles(image_path, conf_threshold)
 
         if not os.path.exists(dest_path):
             os.makedirs(dest_path)
@@ -89,6 +89,22 @@ def main(image_path, conf_threshold=0.3, dest_path=None):
     except Exception as e:
         print(f"An error occurred: {str(e)}")
 
+# Function to count vehicles in an image (e.g. for API)
+def count_vehicle(image_path, conf_threshold=0.3):
+    if conf_threshold < 0 or conf_threshold > 1:
+        raise ValueError("Confidence threshold must be between 0 and 1")
+
+    if not image_path:
+        raise ValueError("Image path is required")
+
+    try:
+        # Process image
+        result_image, vehicle_count = detect_vehicles(image_path, conf_threshold)
+
+        return vehicle_count
+
+    except Exception as e:
+        print(f"An error occurred: {str(e)}")
 
 if __name__ == "__main__":
     # Parse command line arguments
